@@ -1,0 +1,92 @@
+import 'package:flutter/material.dart';
+import 'second_page.dart';
+
+void main() =>
+    runApp(MaterialApp(home: LoginPage())); // Wrap LoginPage with MaterialApp
+
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            SizedBox(width: 10),
+            Text('Doctor Appoinment'),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: _buildContent(context),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    double containerSize = 350.0;
+
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF64B5F6),
+            Color(0xFF81C784),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        borderRadius: BorderRadius.circular(12.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              print('Doctor button pressed');
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(double.infinity, 60.0),
+            ),
+            child: Text('Doctor'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              );
+              print('Patient button pressed');
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(double.infinity, 60.0),
+            ),
+            child: Text('Patient'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              print('Admin button pressed');
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(double.infinity, 60.0),
+            ),
+            child: Text('Admin'),
+          ),
+        ],
+      ),
+    );
+  }
+}

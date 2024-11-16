@@ -1,0 +1,115 @@
+import 'package:flutter/material.dart';
+
+class ThirdPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Patient Information'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildHeader('Patient Information'),
+            SizedBox(height: 20.0),
+            _buildTextField('Patient Name'),
+            SizedBox(height: 20.0),
+            _buildTextField('Age'),
+            SizedBox(height: 20.0),
+            _buildTextField('Disease Suffering From'),
+            SizedBox(height: 20.0),
+            _buildRadioButtons(),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                // Handle submit button press
+                print('Submit button pressed');
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                primary: Colors.blue, // Change the button color
+              ),
+              child: Text(
+                'Submit',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white, // Change the text color
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeader(String title) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold, // Make the title bold
+          ),
+        ),
+        SizedBox(height: 10.0), // Add spacing below the title
+        Divider(
+          color: Colors.blue, // Change the divider color
+          thickness: 2.0, // Adjust the thickness
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextField(String labelText) {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: labelText,
+        border: OutlineInputBorder(),
+      ),
+    );
+  }
+
+  Widget _buildRadioButtons() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Visited Before:',
+          style: TextStyle(
+            fontSize: 18.0,
+          ),
+        ),
+        Row(
+          children: [
+            Radio(
+              value: true,
+              groupValue: null, // You can set a group value here if needed
+              onChanged: null,
+            ),
+            Text(
+              'Yes',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            Radio(
+              value: false,
+              groupValue: null, // You can set a group value here if needed
+              onChanged: null,
+            ),
+            Text(
+              'No',
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
